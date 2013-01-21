@@ -7,5 +7,6 @@ WARNING: We and other contributors are NOT RESPONSIBLE for any consequences when
 
 Supported operations:
 * basicoperations/payment
+* basicoperations/refund
 * threedsecureoperators/checkenrollment
 * threedsecureoperators/paymentusingintegratedmpi
