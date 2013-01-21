@@ -3,7 +3,7 @@
 
 	try
 	{
-		$client = new Payvision_Client();
+		$client = new Payvision_Client(Payvision_Client::ENV_TEST);
 
 		$operation = new Payvision_BasicOperations_Refund();
 		$operation->setMember('1234', 'AAAA-AAAA-AAAA');

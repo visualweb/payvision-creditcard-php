@@ -3,7 +3,7 @@
 
 	try
 	{
-		$client = new Payvision_Client();
+		$client = new Payvision_Client(Payvision_Client::ENV_TEST);
 
 		$payment = new Payvision_ThreeDSecureOperations_PaymentUsingIntegratedMPI;
 		$payment->setMember('1234', 'AAAA-AAAA-AAAA');
