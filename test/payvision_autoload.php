@@ -6,11 +6,12 @@
 	*/
 	function autoload_classes ($class_name)
 	{
-		$class_location = str_replace('_', '/', strtolower($class_name));
+		$class_location = str_replace('payvision_', '', strtolower($class_name));
+		$class_location = str_replace('_', '/', $class_location);
 
-		if (file_exists(__DIR__ . '/../../' . $class_location . '.php'))
+		if (file_exists(__DIR__ . '/../' . $class_location . '.php'))
 		{
-			require_once(__DIR__ . '/../../' . $class_location . '.php');
+			require_once(__DIR__ . '/../' . $class_location . '.php');
 		}
 		else
 		{

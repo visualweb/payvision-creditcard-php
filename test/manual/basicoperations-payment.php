@@ -1,5 +1,5 @@
 <?php
-	require(__DIR__ . '/../require.php');
+	require(__DIR__ . '/../payvision_autoload.php');
 
 	try
 	{
@@ -18,6 +18,17 @@
 		$payment->setTrackingMemberCode('Payment ' . date('His dmY'));
 
 		$client->call($payment);
+
+		var_dump(
+			$payment->getResultState(),
+			$payment->getResultCode(),
+			$payment->getResultMessage(),
+			$payment->getResultTransactionId(),
+			$payment->getResultTransactionGuid(),
+			$payment->getResultTransactionDateTime(),
+			$payment->getResultTrackingMemberCode(),
+			$payment->getResultCdcData()
+		);
 	}
 	catch (Payvision_Exception $e)
 	{

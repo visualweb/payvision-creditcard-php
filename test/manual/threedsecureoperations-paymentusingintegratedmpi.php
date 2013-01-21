@@ -1,5 +1,5 @@
 <?php
-	require(__DIR__ . '/../require.php');
+	require(__DIR__ . '/../payvision_autoload.php');
 
 	try
 	{

@@ -12,6 +12,9 @@ class Payvision_Operation
 	protected $_result_code     = NULL;
 	protected $_result_message  = NULL;
 	protected $_result_tracking_member_code = NULL;
+	protected $_result_transaction_id       = NULL;
+	protected $_result_transaction_guid     = NULL;
+	protected $_result_transaction_datetime = NULL;
 	protected $_result_cdc_name = NULL;
 	protected $_result_cdc_data = array();
 
@@ -82,6 +85,21 @@ class Payvision_Operation
 		return $this->_result_tracking_member_code;
 	}
 
+	public function getResultTransactionId ()
+	{
+		return $this->_result_transaction_id;
+	}
+
+	public function getResultTransactionGuid ()
+	{
+		return $this->_result_transaction_guid;
+	}
+
+	public function getResultTransactionDateTime ()
+	{
+		return $this->_result_transaction_datetime;
+	}
+
 	public function getResultCdcName ()
 	{
 		return $this->_result_cdc_name;
@@ -144,6 +162,21 @@ class Payvision_Operation
 		if (isset($simplexml->TrackingMemberCode))
 		{
 			$this->_result_tracking_member_code = $simplexml->TrackingMemberCode->__toString();
+		}
+
+		if (isset($simplexml->TransactionId))
+		{
+			$this->_result_transaction_id = $simplexml->TransactionId->__toString();
+		}
+
+		if (isset($simplexml->TransactionGuid))
+		{
+			$this->_result_transaction_guid = $simplexml->TransactionGuid->__toString();
+		}
+
+		if (isset($simplexml->TransactionDateTime))
+		{
+			$this->_result_transaction_datetime = $simplexml->TransactionDateTime->__toString();
 		}
 
 		if (isset($simplexml->Cdc))
