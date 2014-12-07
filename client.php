@@ -7,6 +7,8 @@ class Payvision_Client
 
 	protected $_environment    = NULL;
 
+    protected $_ca_certificates_file = null;
+
 	protected $_processor_host = array(
 			'test' => 'testprocessor.payvisionservices.com',
 			'live' => 'processor.payvisionservices.com',
@@ -21,6 +23,16 @@ class Payvision_Client
 			throw new Payvision_Exception('cURL library is required to run this library');
 		}
 	}
+
+    public function setCaCertificatesFile ($file)
+    {
+        if (file_exists($file))
+        {
+            $this->_ca_certificates_file = $file;
+        }
+
+        return false;
+    }
 
 	public function call (Payvision_Operation $operation)
 	{
@@ -70,6 +82,11 @@ class Payvision_Client
 		curl_setopt($ch, CURLOPT_HEADER, FALSE);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
 		curl_setopt($ch, CURLOPT_POST, TRUE);
+
+        if ($this->_ca_certificates_file)
+        {
+            curl_setopt($ch, CURLOPT_CAINFO, $this->_ca_certificates_file);
+        }
 
 		if ( ! is_null($operation->getDataAsArray()) && is_array($operation->getDataAsArray()))
 		{
